@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import Header from './components/Header'
+import Backlog from './components/backlog/Backlog'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import uuid from 'uuid';
+import AddGame from './components/backlog/AddGame';
+
+
+class App extends Component {
+
+  state = {
+    games: [
+      
+    ]
+  }
+
+  addGame = (title, hours) => {
+    const newGame = {
+      id: uuid.v4(),
+      title: title,
+      hours: hours,
+      completed: false,
+      inProgress: false,
+      started: false
+    }
+
+    this.setState({games: [...this.state.games, newGame]})
+  }
+
+  render () {
+    return (
+      <div className="App">
+        <Header />
+        <AddGame addGame={this.addGame} />
+        <Backlog games={this.state.games}/>
+      </div>
+    );
+  }
+  
 }
 
 export default App;
