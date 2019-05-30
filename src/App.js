@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Header from './components/Header'
 import Backlog from './components/backlog/Backlog'
+import './App.css'
 
 import uuid from 'uuid';
 import AddGame from './components/backlog/AddGame';
-
 
 class App extends Component {
 

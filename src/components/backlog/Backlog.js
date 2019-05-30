@@ -1,5 +1,6 @@
 import React from 'react'
 import Game from './Game'
+import PropTypes from 'prop-types';
 
 function Backlog(props) {
     //App -> state.games[]
@@ -8,17 +9,17 @@ function Backlog(props) {
     //cycle through gamesList from App -> state[]
     const gameList = games.map(game => { 
         return (
-            <div className="game" key={game.id}>
-                <div>Title: {game.title}</div>
-                <div>System: {game.system}</div>
-                <div>Hours: {game.hours}</div>
-            </div>
+            <Game key={game.id} game={game}/>
         )
     })
     return (
         <div className="backlog">{gameList}</div>
     )
     
+}
+
+Backlog.propTypes = {
+    games: PropTypes.array.isRequired
 }
 
 export default Backlog;

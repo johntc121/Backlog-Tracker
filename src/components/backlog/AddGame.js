@@ -23,9 +23,11 @@ class AddGame extends Component {
             
             let howLong = require('howlongtobeat');
             let howLongService = new howLong.HowLongToBeatService();
-            howLongService.search(this.state.title).then(res => this.addGame(title, res[0].gameplayMain));
+
+            howLongService.search(this.state.title).then(res => this.addGame(title, res[0].gameplayMain))
+            .catch(reason => console.log(reason));
             
-                
+            
                 //this.props.addGame(this.state.title, res[0].gameplayMain));
 
             e.preventDefault();
@@ -47,7 +49,7 @@ class AddGame extends Component {
                     name="title" 
                     placeholder="Please enter a game"
                     style={{flex: '10', padding: '5px'}}
-                    value={this.state.value}
+                    value={this.state.title}
                     onChange={this.onChange}
                 /> 
                 <input
