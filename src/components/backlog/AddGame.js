@@ -8,6 +8,7 @@ class AddGame extends Component {
 
     addGame(title, hours){
         this.props.addGame(title, hours)
+
     }
 
     //component state -> not app state
@@ -24,7 +25,9 @@ class AddGame extends Component {
             let howLong = require('howlongtobeat');
             let howLongService = new howLong.HowLongToBeatService();
 
-            howLongService.search(this.state.title).then(res => this.addGame(title, res[0].gameplayMain))
+            howLongService.search(this.state.title).then(res => console.log(res));
+
+            howLongService.search(this.state.title).then(res => this.addGame(res[0].name, res[0].gameplayMain))
             .catch(reason => console.log(reason));
             
             

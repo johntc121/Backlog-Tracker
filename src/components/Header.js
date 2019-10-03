@@ -2,9 +2,11 @@ import React from 'react'
 
 function Header() {
     return (
-        <header style={headerStyle}>
-            <h1>How Long To Beat My Backlog</h1>
-        </header>
+        <div>
+            <header style={headerStyle}>
+                <h1>How Long To Beat My Backlog</h1>
+            </header>
+        </div>
     )
 }
 
